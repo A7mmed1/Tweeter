@@ -10651,6 +10651,9 @@ a.text-dark:focus {
 a {
   text-decoration: none;
 }
+body{
+    background-color: black;
+}
 
 .footer {
   color: white;
@@ -10756,4 +10759,3 @@ button a:link {
 .li a {
   text-decoration: none;
 }
-
