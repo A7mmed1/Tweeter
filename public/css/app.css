@@ -10651,20 +10651,17 @@ a.text-dark:focus {
 a {
   text-decoration: none;
 }
-body{
-    background-color: black;
-}
 
 .footer {
   color: white;
-  background-color: #3490DC;
+  background-color: pink;
   margin: 0;
   margin-top: 180px;
   margin-bottom: 0;
 }
 
 .back {
-  background-color: #3490DC;
+  background-color: pink;
   width: 100%;
   color: #3490DC;
 }
@@ -10759,3 +10756,4 @@ button a:link {
 .li a {
   text-decoration: none;
 }
+
