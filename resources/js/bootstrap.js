@@ -1,3 +1,15 @@
+import axios from 'axios';
+import Vue from 'vue';
+
+
+window.Vue = Vue;
+
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+//axios.defaults.headers.common['authorization'] = 'Bearer ' + Laravel.apiToken;
+
+
+
 window._ = require('lodash');
 
 /**
@@ -32,7 +44,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    // window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
@@ -53,3 +66,17 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+// import Giphy from './components/Giphy';
+// window.Vue.component('giphy', Giphy);
+
+
+window.Vue = Vue;
+
+//axios.defaults.headers.common['X-CSRF-TOKEN'] = Laravel.csrfToken;
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// axios.defaults.headers.common['Authorization'] = 'Bearer ' + Laravel.apiToken;
+
+window.axios = axios;
+
+import Giphy from './components/Giphy';
+window.Vue.component('giphy', Giphy);

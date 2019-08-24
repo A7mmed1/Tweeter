@@ -7,6 +7,15 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// body {
+//     background-color: #eeeeee;
+// }
+body{
+    overflow: auto;
+    background-color: #eeeeee;
+
+}
+
 .navbar-nav
         li{
             a {

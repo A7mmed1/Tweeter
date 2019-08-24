@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Giphy;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Comment;
-use App\Tweet;
-use App\User;
+use Illuminate\Http\Response ;
 
-
-class CommentsController extends Controller
+class GiphyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +19,9 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $results = Giphy::->get();
+
+       return response()->json($results);
     }
 
     /**
@@ -37,21 +40,9 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        $request->validate([
-            'comment' => "required"
-        ]);
-        $tweet = Tweet::where('id',$id)->firstorFail();
-        //users
-        $user_id =Auth::id();
-        $comment = new Comment();
-        $comment->comment= $request->comment;
-        $comment->tweet()->associate($tweet);
-        $comment->user_id= $user_id;
-
-        $comment->save();
-            return back();
+        //
     }
 
     /**
@@ -73,11 +64,7 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        $tweet = \App\Tweet::find($id);
-        $comment= \App\Comment::find($id);
-
-
-        return view('comments/edit', compact('tweet','comment'));
+        //
     }
 
     /**
@@ -89,26 +76,7 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $user_id =Auth::id();
-        $comment = \App\Comment::where('tweet_id', $id)->limit(1)->first();
-
-
-
-
-        $comment->comment=$request->input('comment');
-        
-
-
-
-
-
-        $comment->save();
-
-
-        return back();
-
-
+        //
     }
 
     /**
@@ -118,15 +86,7 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-
     {
-         // $tweet = Tweet::where('id',$id)->firstorFail();
-        $comment= \App\Comment::findOrFail($id)->delete();
-
-
-        if($comment){
-            return redirect('/tweets/');
-        }
-            return back();
+        //
     }
 }

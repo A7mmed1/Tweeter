@@ -10644,15 +10644,17 @@ a.text-dark:focus {
   }
 }
 
+body {
+  overflow: auto;
+  background-color: #eeeeee;
+}
+
 .navbar-nav li a {
   color: white;
 }
 
 a {
   text-decoration: none;
-}
-body{
-    background-color: black;
 }
 
 .footer {
@@ -10759,3 +10761,4 @@ button a:link {
 .li a {
   text-decoration: none;
 }
+
