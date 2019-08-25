@@ -1927,6 +1927,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 // import  Result from './Result.vue'
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37933,7 +37939,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container clear-fix" }, [
       _c("div", { staticClass: "gif" }, [
-        _c("h5", {}, [_vm._v("Gif")]),
+        _c("h5", { staticClass: "btn btn-dark" }, [_vm._v("Gif")]),
         _vm._v(" "),
         _c("div", { staticClass: "dropDown" }, [
           _c("div", { staticClass: "m-0" }, [
@@ -38012,7 +38018,12 @@ var render = function() {
         _c("div", { staticClass: "one" }, [
           _c("h1", [_vm._v("Selected")]),
           _vm._v(" "),
-          _c("img", { attrs: { src: this.selected, alt: "" } })
+          _c("img", { attrs: { src: this.selected, alt: "" } }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden", name: "gif" },
+            domProps: { value: this.selected }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "url text-right" }, [

@@ -2,12 +2,12 @@
     <div >
         <div class="container clear-fix">
             <div class="gif">
-                    <h5 class="">Gif</h5>
+                    <h5 class="btn btn-dark">Gif</h5>
                 <div class="dropDown">
                     <div class="m-0">
                         Chosse Gif
                         <form class="form-group mt-0 p-4" @submit.prevent="doSearch">
-                            <input v-model="query" type="text" placeholder="Gif">
+                            <input v-model="query" type="text" placeholder="Gif" >
                             <button  type="submit"  class="btn btn-primary m-2">Search</button>
 
                         </form>
@@ -15,7 +15,9 @@
 
                     <ul class="">
                         <li   @click="chosseOne(index)" v-for="(result, index) in results">
+
                         <img   :src="result.images.fixed_height.url">
+
                         <hr>
                         </li>
                     </ul>
@@ -24,10 +26,14 @@
                     <div class="one">
                         <h1>Selected</h1>
                         <img :src="this.selected" alt="">
+                        <input type="hidden" name="gif" :value="this.selected"/>
+
+
                         <!-- <h6>{{this.selected}}</h6>     -->
                     </div>
                     <div class="url text-right">
                         <h6 class="text-right">{{this.selected}}</h6>
+
 
                     </div>
 

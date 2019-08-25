@@ -73,6 +73,7 @@
                    <td>
                        <img src="/storage/profile_image/{{$comment->user->profile->profileimage}}" width="50px;"  class="rounded-circle" alt="">
                        <a href="/users/{{$comment->user->id}}">  {{$comment->user->name}} </a>
+
                    </td>
                         @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id) && !Auth::guest() || (Auth::user()->id == $comment->user->id))
                     <td>  <a class="btn btn-success" href="/comments/{{$comment->id}}/edit"><i class="fas fa-edit">Edit Comment</i></a></td>
@@ -91,7 +92,10 @@
                    <td>
                <tr>
                    <td>  <p class="box">{!!$comment->comment!!}</p>
-                       <img :src="this.selected" alt="">
+                       <a href="{{ $comment->gif }}">  <img class ="giphy" src="{{ $comment->gif }}" alt=""></a>
+
+
+                       <!-- <img :src="this.selected" alt=""> -->
                           <h6 class="pull-right text-muted">{{$comment->created_at->diffForHumans()}}</h6>
                   </td>
               </tr>
@@ -107,8 +111,12 @@
                        {{csrf_field()}}
                        <div class="form-group">
                            <label for="comment">  <i class="far fa-comment-alt">Add New comment :</i> </label>
-                           <textarea name="comment" class="form-control " rows="8" cols="80" placeholder="Add your Comment...."></textarea>
-                           <giphy resource=""> </giphy>
+                           <input name="comment" class="form-control form-rounded"  placeholder="Add your Comment...."><giphy 
+                           :value="this.selected"
+
+
+                           > </giphy></input>
+
 
                        </div>
                        <div class="form-group text-right">

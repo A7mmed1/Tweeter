@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
 use App\Tweet;
+use App\Giphy;
 use App\User;
 
 
@@ -40,17 +41,26 @@ class CommentsController extends Controller
     public function store(Request $request,$id)
     {
         $request->validate([
-            'comment' => "required"
+            'comment' => "required",
+
+
         ]);
+        // @$result = response.data.data;
+
         $tweet = Tweet::where('id',$id)->firstorFail();
+        $data = $request->all();
         //users
         $user_id =Auth::id();
         $comment = new Comment();
         $comment->comment= $request->comment;
         $comment->tweet()->associate($tweet);
         $comment->user_id= $user_id;
+        $comment->gif = $request->gif;
+
 
         $comment->save();
+        // return ('Successfully added');
+
             return back();
     }
 
@@ -97,7 +107,9 @@ class CommentsController extends Controller
 
 
         $comment->comment=$request->input('comment');
-        
+        $comment->gif = $request->gif;
+
+
 
 
 
@@ -125,7 +137,7 @@ class CommentsController extends Controller
 
 
         if($comment){
-            return redirect('/tweets/');
+            return back();
         }
             return back();
     }

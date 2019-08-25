@@ -10749,6 +10749,18 @@ a {
   }
 }
 
+.form-rounded {
+  border-radius: 1rem;
+}
+
+.giphy {
+  width: 40%;
+  clear: both;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
 button:hover,
 a:hover {
   opacity: 0.7;
