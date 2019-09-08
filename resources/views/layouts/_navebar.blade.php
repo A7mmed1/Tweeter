@@ -11,14 +11,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <li class="p-2">       <a href="{{url('/tweets')}}"><span style="font-size: 1em; color: "><i class="fab fa-twitter icon-5x">News feed</i></span></a> </li>
+                    <li class="p-2">       <a href="{{url('/tweets')}}"><span style="font-size: 1em"><i class="fab fa-twitter icon-5x">News feed</i></span></a> </li>
                     <li>  </li>
 
                     @auth
-                    <li class="p-2">    <a href="/users/{{ Auth::user()->id }}"><span style="font-size: 1em; color: "><i class="fas fa-user-circle">Profile </i></span></a> </li>
+                    <li class="p-2">    <a href="/users/{{ Auth::user()->id }}"><span style="font-size: 1em "><i class="fas fa-user-circle">Profile </i></span></a> </li>
                     @endauth
                     <li>  </li>
-                    <li class="p-2"> <a href="/users/"><span style="font-size: 1em; color: "><i class="fas fa-user-friends">People To Follow</i> </span></a></li>
+                    <li class="p-2"> <a href="/users/"><span style="font-size: 1em"><i class="fas fa-user-friends">People To Follow</i> </span></a></li>
 
 
 
@@ -39,7 +39,7 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <span style="font-size:  color:green; ">    <i class="fab fa-signal-1"></span>   {{ Auth::user()->name }}    </i>         <img src="/storage/profile_image/{{Auth::user()->profile->profileimage}}" width="40px;"  class="rounded-circle" alt="">
+                                <span style="color:green ">    <i class="fab fa-signal-1"></span>   {{ Auth::user()->name }}    </i>         <img src="/storage/profile_image/{{Auth::user()->profile->profileimage}}" width="40px;"  class="rounded-circle" alt="">
 <span class="caret"></span>
                             </a>
 
@@ -50,7 +50,7 @@
                                 <span style="font-size: 1em; color:black; ">    {{ __('Logout') }} </span>
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                                     @csrf
                                 </form>
                             </div>

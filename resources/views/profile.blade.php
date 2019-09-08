@@ -1,95 +1,113 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-
-    <div><h1>Profile</h1></div>
-
+        <!-- for background image -->
+        <div class="ground"></div>
         <div class="row">
 
-            <div class="col-3 m-1">
-            <a href="/storage/profile_image/{{$user->profile->profileimage}}">   <img src="/storage/profile_image/{{$user->profile->profileimage}}" width="200px;"  class="rounded-circle" alt=""></a>
+            <div class="col-md-6 ml-auto mr-auto">
+                <!-- starting the profile -->
+               <div class="profile2">
+                    <div class="avatar ml-8">
+                        <a href="/storage/profile_image/{{$user->profile->profileimage}}"><img src="/storage/profile_image/{{$user->profile->profileimage}}" width="200px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+</a>
+                    </div>
+                    <div class="name ">
 
-            </div>
-            <div class="col-9 pt-5">
-
-                <div><h1></h1></div>
-
-
-                <div><h2>{{$user->name}}<i style="color:#3490DC;"class="fas fa-check-circle"></i></h2></div>
-                <div class="lo">
-                    <span style="color:red; "><i class="fas fa-map-marker-alt"></span></i>Location :    {{ @$user->profile->location }}
-                </div>
-                <div class="bi">
-                    <i class="fas fa-birthday-cake"> Date Of Birth :    {{ @$user->profile->birthday }}</i>
-
-                </div>
-                <div class="text-inline">
-                        <span class="text-inline"><i class="fas fa-info-circle"></i>Bio: {{ @$user->profile->bio }}</span>
-
-                </div>
-                <div class="d-flex">
-                    <div class="p-2"> <a href="{{url('/tweets')}}"><strong><h6><strong>{{$user->following->count()}}</strong> Following</h6></strong></a>  </div>
-                    @if(@$user->profile->followers->count())
-                    <div class="p-2"> <a href="{{url('/tweets')}}"><strong><h6><strong>{{@$user->profile->followers->count()}}</strong> Followers</h6></strong></a>  </div>
-                    @endif
-                    <div class="p-2"><strong><h6><strong>{{$user->tweets->count()}}</strong> Tweets</h6></strong> </div>
-                    @if(auth()->check() && auth()->user()->id !== $user->id)
-                    <div><strong><follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button></strong> </div>
-                    @endif
-                </div>
-            </div>
-                    <hr>
-                    <br>
-
-        <div class="container">
-            <div class="text-right">
-                        @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                </div>
-                        @endif
-
-                <div class="text-center mr-40">
-                        @foreach($user->tweets as $tweet)
-                    <div class="col-12">
-                        <img src="/storage/profile_image/{{$user->profile->profileimage}}" width="100px;"  class="rounded-circle" alt="">
-
-                            <h2>{{ $tweet->user->name }}</h2>
+                        <h3 class="title mr-5"><i style="color:#3490DC"class="fas fa-check-circle">{{$user->name}}</i></h3>
+                        <p class="btn ef text-muted"><span style="color:red "><i class="fas fa-map-marker-alt"></span></i>Location :  {{ @$user->profile->location }}</p>
+                        <p class="btn ef text-muted"><span style="color:red "><i class="fas fa-birthday-cake"></span></i> Date Of Birth : {{ @$user->profile->birthday }}</p>
+                        <p class="btn ef text-muted"><span style="color:red "><i class="far fa-calendar-check"></i></span> </i> Joined Since : {{ @$user->profile->created_at->diffForHumans() }}</p>
 
                     </div>
-                            <h5><a href="/tweets/{{ $tweet->id }}"><i class="far fa-eye"> {!!$tweet->title!!}</i></a></h5>
-                            <td> <a href="/storage/tweet_image/{{$tweet->image}}"> <img src="/storage/tweet_image/{{$tweet->image}}" width="200px"alt="photo"></a>
 
-                            <hr>
-                            <h4>{!!$tweet->body!!}</h4>
-                            <!-- <img src="/storage/tweet_image/{{$tweet->image}}" alt=""> -->
-                            <small><i class="fas fa-calendar-check p-2 text-muted">{{$tweet->created_at->diffForHumans()}}</i></small>
-                            <span style="color:#3490DC;" >
-                                like({{$tweet->likes()->count() }})
-                            Comment ({{$tweet->comments->count()}})
-                            </span>
-                            <hr>
-                            @endforeach
                 </div>
-                <div class="text-center">
-
-                    <td>    @if(!Auth::guest() && (Auth::user()->id == $user->profile->user_id))</td>
-
-                        <a class="btn btn-success" href="/users/{{$user->id}}/edit"><i class="fas fa-edit">Edit Profile</i></a>
-
-                                @endif
-                               <!-- adding @ before the user avoid the error of undefine var
-
-                             <!-- <a href="/users/">Friends </a> -->
-                 </div>
-            </div>
+         </div>
+         <div class="col-md-12 description text-center ">
+            <p class="btn"><i class="fas fa-info-circle"></i>Bio :{{ @$user->profile->bio }} </p>
+         </div>
         </div>
-                    <hr>
-    </div>
-</div>
 
+        <div class="col-md-3 ml-auto mb-5">
+            <!-- Edit profile and Follow Button  -->
+                @if(!Auth::guest() && (Auth::user()->id == $user->profile->user_id))
+                <a class="btn btn-success" href="/users/{{$user->id}}/edit"><i class="fas fa-edit">Edit Profile</i></a>
+                @endif
+                @if((auth()->check() && auth()->user()->id !== $user->id))
+
+               <div><strong><follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button></strong> </div>
+                @endif
+                <!-- end of Edit profile and Follow Button  -->
+        </div>
+		<div class="row">
+			<div class="col-md-6 ml-auto mr-auto">
+                <div class="profile-tabs">
+                  <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active btn-outline-success" href="{{url('/tweets')}}" >
+                          {{$user->following->count()}}
+                         Following
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        @if(@$user->profile->followers->count())
+                        <span class="nav-link btn-light" href="{{url('/tweets')}}" role="tab" data-toggle="tab">
+                         {{@$user->profile->followers->count()}}
+                            Followers
+                        </span>
+                        @endif
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-secondary" href="" role="tab" data-toggle="tab">
+                            {{$user->tweets->count()}}
+                            Tweets
+                        </a>
+                    </li>
+                  </ul>
+            </div>
+    	</div>
+    </div>
+            <hr>
+  <!-- Start Tweets  -->
+    <div class="container text-center ">
+
+        <div class="row ml-5 pl-5 ">
+                @foreach($tweets as $tweet)
+                  <div class="col-md-6 ml-4 text-cente justify-content-center">
+
+                        <img src="/storage/profile_image/{{$user->profile->profileimage}}" width="100"  class="rounded-circle" alt="profile">
+                        <h2>{{ $tweet->user->name }}</h2>
+                        <h4><strong><a href="/tweets/{{ $tweet->id }}">
+                        {{$tweet->title}} </a></strong></h4><br>
+                        {{$tweet->body}}
+
+                        <p class="pull-left mt-2"> </p>
+
+                 <div class="row">
+
+
+                        <a href="/storage/tweet_image/{{$tweet->image}}" class="thumbnail">
+                        <img alt="Image"  width="400" src="/storage/tweet_image/{{$tweet->image}}" class="m-4 pull-right">
+                        </a>
+                    <div class="d-flex ">
+                        <p class="p-2 m-1 mr-4"><i class="far fa-thumbs-up" style="color:#3490DC">like({{$tweet->likes()->count() }})</i></p>
+                        <p class="p-2 m-1 "><i class="far fa-comment-alt" style="color:#3490DC">Comment ({{$tweet->comments->count()}})</i></p>
+
+                        <p class="p-2 mb-1"></small><i class="far fa-calendar-check p-2 text-muted">{{$tweet->created_at->diffForHumans()}}</i></small></p>
+
+                    </div>
+                            <hr>
+                </div>
+               </div>
+                            <hr>
+                             @endforeach
+
+         </div>
+         <!-- End Tweets -->
+         <!-- Pagination -->
+             <p class="Page navigation example">{{$tweets->links()}}</p>
+
+     </div>
 
 
 @endsection

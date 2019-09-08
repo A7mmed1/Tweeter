@@ -7,16 +7,17 @@
         {{ method_field('PUT') }}
 
 
-
-
-
-
-
         <div class="form-group">
             <label for="usr"></label>
-            <textarea name="comment" rows="4" cols="50" class="form-control ckeditor">{{$comment->comment}}</textarea>
-        </div>
-    </br>
-    <input type="submit" class="btn btn-primary" value="update">
+            <input name="comment" class="form-control form-rounded"  placeholder="Add your Comment...."><giphy
+            :value="this.selected"
 
+
+            > </giphy></input>
+        </div>
+            </br>
+        <div class="form-group text-right">
+
+            <input type="submit" class="btn btn-primary mt-4" value="Update">
+        </div>
 @endsection

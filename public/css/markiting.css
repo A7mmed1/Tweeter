@@ -1,0 +1,231 @@
+navbar-dark .navbar-brand {
+  color: black;
+}
+
+.bg-primary {
+  background-color: #3490DC !important;
+}
+
+.parallax {
+  background-image: url(/images/11.jpg?e2290080ecab1734e4d149c5b8fccf60);
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax p {
+  opacity: 0.7;
+  margin-bottom: 4px;
+  margin-top: -4px;
+}
+
+.parallax button {
+  opacity: 0.7;
+}
+
+.parallax button a {
+  opacity: 0.7;
+  text-decoration: none;
+  color: white;
+}
+
+.parallax .sen {
+  color: white;
+}
+
+.ppl {
+  background-color: #eeeeee;
+}
+
+.ppl p {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 2;
+  color: #989898;
+}
+
+.pplScrolled {
+  opacity: 1 !important;
+}
+
+.slider {
+  margin: 0;
+  padding: 0;
+}
+
+.feature {
+  padding: 50px;
+}
+
+.feature .second img {
+  text-align: center;
+}
+
+.feature span {
+  font-size: 20px;
+  color: #19508c;
+}
+
+.feature p {
+  color: #989898;
+  margin-bottom: 40px;
+}
+
+.change {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.over {
+  background-image: url(/images/11.jpg?e2290080ecab1734e4d149c5b8fccf60);
+  opacity: 0.7;
+  min-height: 500px;
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.about {
+  margin-top: 20px;
+}
+
+.about .display-4 {
+  color: #19508c;
+  font-size: 30px;
+}
+
+.deel {
+  opacity: 1;
+  background-color: #3490DC;
+  color: black;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel a {
+  color: white;
+}
+
+.deel .info span {
+  font-size: 20px;
+  opacity: 0.5;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.deel .info h5 {
+  opacity: 0.5;
+  font-size: 15px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  color: white;
+}
+
+.deel .info p {
+  opacity: 0.5;
+  line-height: 1.8;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .info li {
+  opacity: 0.5;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .info a {
+  opacity: 0.5;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .info a:before {
+  display: inline-block;
+}
+
+.deel .help span {
+  opacity: 0.5;
+  color: white;
+  font-size: 20px;
+}
+
+.deel .help h2 {
+  opacity: 0.5;
+  color: white;
+  margin-bottom: 30px;
+  color: #19508c;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .help li {
+  opacity: 0.5;
+  color: white;
+  position: relative;
+  top: -1px;
+  margin-right: 5px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .email span {
+  font-size: 20px;
+  opacity: 0.5;
+  color: white;
+}
+
+.deel .email h2 {
+  opacity: 0.5;
+  margin-bottom: 30px;
+  color: white;
+  text-shadow: 2px 2px 8px black;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .email p {
+  opacity: 0.5;
+  color: white;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.deel .email a {
+  opacity: 0.5;
+  font-weight: bold;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.foot {
+  background-color: #3490DC;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2;
+}
+

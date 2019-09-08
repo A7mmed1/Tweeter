@@ -22,7 +22,7 @@ class TweetsController extends Controller
 
         $users = auth()->user()->following()->pluck('profiles.user_id');
 
-        $tweets = \App\Tweet::whereIn('user_id',$users)->latest()->get();
+        $tweets = \App\Tweet::whereIn('user_id',$users)->latest()->paginate(3);
 
         // $user = Auth::user();
         // $userIds = $user->following()->pluck('id')->toArray();
@@ -172,7 +172,7 @@ class TweetsController extends Controller
         $tweet->save();
 
 
-        return redirect('/tweets/');
+        return view('tweets.show', compact('tweet'));
         }
 
 
@@ -192,34 +192,44 @@ class TweetsController extends Controller
             return back();
     }
 
-    public function like($id){
+    public function like(Tweet $tweet){
+        Auth::user()->likes()->attach($tweet->id);
+
+        return back();
 
 
-        $existing =\App\Like::where('user_id',Auth::id())
-                            ->where('tweet_id',$id)
-                            ->count();
-                if($existing)
-                {
-                    $delete = \App\Like::where('user_id',Auth::id())
-                                      ->where('tweet_id',$id)
-                                      ->delete();
+        // $existing =\App\Like::where('user_id',Auth::id())
+        //                     ->where('tweet_id',$id)
+        //                     ->count();
+        //         if($existing)
+        //         {
+        //             $delete = \App\Like::where('user_id',Auth::id())
+        //                               ->where('tweet_id',$id)
+        //                               ->delete();
+        //
+        //             if($delete)
+        //             return back();
+        //
+        //     }
+        //
+        //     $like = new \App\Like;
+        //     $like->user_id = Auth::id();
+        //     $like->tweet_id = $id ;
+        //
+        //
+        //     if($like->save())
+        //     {
+        //             return back();
+        //     }
+        //
+        // }
+    }
+        public function unlike(Tweet $tweet)
+    {
+        Auth::user()->likes()->detach($tweet->id);
 
-                    if($delete)
-                    return back();
-
-            }
-
-            $like = new \App\Like;
-            $like->user_id = Auth::id();
-            $like->tweet_id = $id ;
-
-
-            if($like->save())
-            {
-                    return back();
-            }
-                dd('Error');
-        }
+        return back();
+    }
 
 
 }

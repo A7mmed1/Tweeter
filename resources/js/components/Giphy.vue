@@ -2,7 +2,7 @@
     <div >
         <div class="container clear-fix">
             <div class="gif">
-                    <h5 class="btn btn-dark">Gif</h5>
+                    <h5 class="btn btn-outline-dark rounded-circle">Gif</h5>
                 <div class="dropDown">
                     <div class="m-0">
                         Chosse Gif
@@ -32,7 +32,6 @@
                         <!-- <h6>{{this.selected}}</h6>     -->
                     </div>
                     <div class="url text-right">
-                        <h6 class="text-right">{{this.selected}}</h6>
 
 
                     </div>
@@ -46,10 +45,8 @@
 </template>
 
 <script>
-// import  Result from './Result.vue'
 import axios from 'axios'
 export default {
-    // props: ['resource','results'],
 
     data(){
         return {
@@ -91,7 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 *{
-    // background-color: #eeeeee;
+    //background-color: #eeeeee;
 }
 ul{
     list-style:  none;
@@ -110,9 +107,13 @@ img{
     width: 50%;
     padding: 0;
     margin-top: 10px;
+    margin-bottom: 0px;
 
 }
 .dropDown{
+    margin-top: 0;
+    padding-top: 0;
+    background-color: white;
     display: none;
     position: absolute;
     top: 42px;
@@ -125,6 +126,19 @@ img{
 
 
 }
+.dropDown::before{
+    content: "";
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid white;
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 15px;
+    top: -10px;
+
+}
+
 .one{
     float:right;
     margin-left: 500px;

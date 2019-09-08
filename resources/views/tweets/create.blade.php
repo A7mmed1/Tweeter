@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="usr">What's happening:</label>
-            <textarea name="body" rows="4" cols="50" class="form-control ckeditor"></textarea>
+            <textarea name="body" rows="4" cols="50" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <label for="image">image:</label>

@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
 Vue.component('giphy',require('./components/Giphy.vue').default);
+Vue.component('like', require('./components/Like.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +31,5 @@ Vue.component('giphy',require('./components/Giphy.vue').default);
 
 const app = new Vue({
     el: '#app',
+
 });

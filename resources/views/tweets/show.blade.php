@@ -9,6 +9,8 @@
                     <a href="/users/{{$tweet->user->id}}">    {{$tweet->user->name}} </a>
                 <td>
                 @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id))
+                <!-- this condition to make only the tweet onwer see the delete  and Edit buttons  -->
+
                 <form action="/tweets/{{$tweet->id}} " method="POST">
 
                     @csrf
@@ -44,17 +46,31 @@
             </tr>
             <tr>
 
-                <td>{!!$tweet->body!!}</td>
+                <td>{{$tweet->body}}</td>
 
             </tr>
             <tr>
                 <td>
                     <div class="d-flex">
+
                         <div class="p-2">
-                            <h4><i class="far fa-comment-alt">Comment {{$tweet->comments->count()}}</i></h4>
+                            <!-- like component  -->
+                            <like :tweet="{{ $tweet->id }}"  :liked="{{ $tweet->liked() ? 'true' : 'false' }}" :count="{{$tweet->likes()->count()}}"></like>
+
+
+
+
                         </div>
-                        <div class="p-1">
-                            <a href="/tweets/{{$tweet->id}}/like" class="btn btn-primary"><i class="far fa-thumbs-up">like({{$tweet->likes()->count() }})</i></a>
+                        <div class="p-2 mt-2">
+                            <span></span>
+
+                        </div>
+                        <div class="p-2 mt-2 mr-0">
+                            <h4><i class="far fa-comment-alt">Comments ({{$tweet->comments->count()}})</i></h4>
+
+
+
+                            <!-- <a href="/tweets/{{$tweet->id}}/like" class="btn btn-primary"><i class="far fa-thumbs-up">like({{$tweet->likes()->count() }})</i></a> -->
                         </div>
                     </div>
                 </td>
@@ -74,6 +90,7 @@
                        <img src="/storage/profile_image/{{$comment->user->profile->profileimage}}" width="50px;"  class="rounded-circle" alt="">
                        <a href="/users/{{$comment->user->id}}">  {{$comment->user->name}} </a>
 
+
                    </td>
                         @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id) && !Auth::guest() || (Auth::user()->id == $comment->user->id))
                     <td>  <a class="btn btn-success" href="/comments/{{$comment->id}}/edit"><i class="fas fa-edit">Edit Comment</i></a></td>
@@ -91,12 +108,12 @@
                    </td>
                    <td>
                <tr>
-                   <td>  <p class="box">{!!$comment->comment!!}</p>
+                   <td>  <p class="box pull-left">{{$comment->comment}}</p><br>
                        <a href="{{ $comment->gif }}">  <img class ="giphy" src="{{ $comment->gif }}" alt=""></a>
 
 
                        <!-- <img :src="this.selected" alt=""> -->
-                          <h6 class="pull-right text-muted">{{$comment->created_at->diffForHumans()}}</h6>
+                          <h6 class="mb-2 text-muted">{{$comment->created_at->diffForHumans()}}</h6>
                   </td>
               </tr>
                     </td>
@@ -111,12 +128,12 @@
                        {{csrf_field()}}
                        <div class="form-group">
                            <label for="comment">  <i class="far fa-comment-alt">Add New comment :</i> </label>
-                           <input name="comment" class="form-control form-rounded"  placeholder="Add your Comment...."><giphy 
+                           <input name="comment" class="form-control form-rounded"  placeholder="Add your Comment...."><giphy
                            :value="this.selected"
 
 
                            > </giphy></input>
-
+                           <!-- Giphy Componenet -->
 
                        </div>
                        <div class="form-group text-right">

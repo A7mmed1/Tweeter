@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<a  href="/tweets/create" class="btn btn-primary rounded-circle m-3">Add New Tweet</a>
+<div class="row">
+
+<div class="col-md-8">
+
+
+<a  href="/tweets/create" class="st btn rounded-circle m-3">Add New Tweet</a>
 
     <div class="container text-center">
         <table class="table table-striped">
@@ -17,16 +22,19 @@
                     <br>
                     <a href="/storage/tweet_image/{{$tweet->image}}">   <img src="/storage/tweet_image/{{$tweet->image}}" width="300px" alt="photo"></a>
                     <br>
+
+                    <i class="far fa-thumbs-up " style="color:#3490DC">like({{$tweet->likes()->count() }})</i>
+                    <i class="far fa-comment-alt" style="color:#3490DC">Comment ({{$tweet->comments->count()}})</i>
                     <small class="h6">
                     <span class="info p-2"><i class="fas fa-calendar-check text-muted">{{$tweet->created_at->diffForHumans()}}</i></span>
                     </small>
-                    <i class="far fa-thumbs-up" style="color:#3490DC;">like({{$tweet->likes()->count() }})</i>
-                    <i class="far fa-comment-alt" style="color:#3490DC";>Comment ({{$tweet->comments->count()}})</i>
 
                 </td>
             </tr>
             <tr>
                 <td>    @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id))</td>
+                <!-- this condition to make only the tweet onwer see the delete  and Edit buttons  -->
+
                 <td>
                     <form action="/tweets/{{$tweet->id}} " method="POST">
 
@@ -48,8 +56,39 @@
 
             </tr>
             @endforeach
+            <!-- Pagination -->
+            <td>{{$tweets->links()}}</td>
         </table>
 
     </div>
+    </div>
+    <div class="col-md-4 pull-right mb-10">
+        <div class="card">
+            <div class="card-header">
+                Notifications
+                {{Auth::user()->notifications->count()}}
+
+            </div>
+            <div class="card-body">
+                <!-- notifications for Following  -->
+                @foreach(Auth::user()->unreadnotifications as $notification)
+
+                <h5>{{$notification->data['user_name']}} started following you</h5>
+                <p>{{$notification->created_at->diffForHumans()}}</p>
+                 {{$notification->markAsread()}}
+
+
+                @endforeach
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
 
 @endsection

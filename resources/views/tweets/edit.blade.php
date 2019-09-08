@@ -12,7 +12,7 @@
 
             <div class="form-group">
                     <label for="usr">Body:</label>
-                    <textarea name="body" rows="4" cols="50" class="form-control ckeditor"> {{$tweet->body}} </textarea>
+                    <textarea name="body" rows="4" cols="50" class="form-control"  placeholder="1990-08-12"> {{$tweet->body}} </textarea>
             </div>
             <div class="form-group">
                 <label for="image">image:</label>

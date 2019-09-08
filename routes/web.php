@@ -1,5 +1,10 @@
 <?php
 
+
+use App\Notifications\NewFollower;
+use App\User;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +28,7 @@ Route::post('follow/{user}','FollowsController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/u/{user}', 'ProfileController@s')->name('profile');
+Route::post('/follow','ProfileController@followOrUnfollow');
 Route::resource('/users', 'ProfileController');
 
 Route::resource('/comments', 'CommentsController');
@@ -34,7 +40,16 @@ Route::resource('/comments', 'CommentsController');
 Route::resource('/tweets', 'TweetsController');
 
 
-Route::get('/tweets/{tweet}/like','TweetsController@like');
-// Route::get('/tweets/{tweet}/unlike','TweetsController@unlike');
+Route::post('like/{tweet}/','TweetsController@like');
+Route::post('unlike/{tweet}/','TweetsController@unlike');
 
 Route::post('/comments/{id}','CommentsController@store')->name('comments.store');
+
+// Route::get('/x',function(){
+//     // $user= Auth::user();
+//     // $user->notify(new NewFollower (User::findorFail(2)));
+//     foreach(Auth::user()->notifications as $notification){
+//
+//         $notification->markAsRead();
+//     }
+// });

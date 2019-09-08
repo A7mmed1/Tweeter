@@ -10,6 +10,8 @@ class FollowsController extends Controller
     public function store(User $user){
 
         return auth()->user()->following()->toggle($user->profile);
+        // $user->notify(new NewFollower (User::findorFail(2)));
+
 
     }
 

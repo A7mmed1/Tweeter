@@ -12,7 +12,7 @@
         </div>
         <div class="form-group">
             <label for="usr">birthday:</label>
-            <input type="text" name="birthday"  class="form-control" value="{{@$user->profile->birthday}}">
+            <input type="text" name="birthday"  class="form-control" value="{{@$user->profile->birthday}}" placeholder="1990-08-12">
         </div>
 
         <div class="form-group">

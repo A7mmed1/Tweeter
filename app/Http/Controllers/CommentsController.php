@@ -100,13 +100,12 @@ class CommentsController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user_id =Auth::id();
-        $comment = \App\Comment::where('tweet_id', $id)->limit(1)->first();
 
 
-
-
+        $comment =\App\Comment::find($id);
         $comment->comment=$request->input('comment');
+
+
         $comment->gif = $request->gif;
 
 
@@ -118,7 +117,7 @@ class CommentsController extends Controller
         $comment->save();
 
 
-        return back();
+        return redirect('/tweets/');
 
 
     }
@@ -139,6 +138,6 @@ class CommentsController extends Controller
         if($comment){
             return back();
         }
-            return back();
+            return (back());
     }
 }

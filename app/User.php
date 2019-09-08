@@ -37,9 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     public function likes()
+
     {
-        return $this->hasMany('App\Like');
+        return $this->belongsToMany(Tweet::class, 'likes', 'user_id', 'tweet_id')->withTimeStamps();
+        // return $this->hasMany('App\Like');
     }
+
     public function following()
     {
         return $this->belongsToMany('App\Profile');

@@ -9,6 +9,8 @@ use App\Comment;
 use App\Tweet;
 use App\User;
 use App\Profile;
+use App\Notifications\NewFollower;
+
 
 
 
@@ -27,6 +29,7 @@ class ProfileController extends Controller
             $users = User::all();
             $user = Auth::user();
             $follows = (auth()->user()) ? auth()->user()->following->contains($user->profile) : false;
+
     //   dd($follows);
 
         // $tweets = Tweet::user()->tweets;
@@ -108,11 +111,21 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail($id);
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->profile) : false;
+        $tweets = \App\Tweet::whereIn('user_id',$user)->latest()->paginate(2);
 
+
+        $noti=$user->notify(new NewFollower (Auth::user()));
+        // dd($noti);
+
+        // if($exist){
+        //     $delete =$user->notify(new NewFollower (Auth::user()))->delete();
+        // }
+        // if($delete)
+        //            return back();
 
 
         return view('profile',[
-            // 'tweets'=>$tweets,
+            'tweets'=>$tweets,
             'user'=>$user,
             'follows' => $follows
         ]);
@@ -138,6 +151,19 @@ class ProfileController extends Controller
 
         return view('edit', compact('user','profile'));
     }
+    // public function followOrUnfollow(Request $request)
+    // {
+    //     if($request->$follows){
+    //         $user= User::findOrFail($request->user);
+    //         Auth::user()->following()->attach($user->id);
+    //         $user->notify(new NewFollower (Auth::user()));
+    //
+    //     } else {
+    //         $user = User()->following()->detach($user->id);
+    //
+    //     }
+    // }
+
 
     /**
      * Update the specified resource in storage.
