@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<!-- <div class="row">
 
-<div class="col-md-8">
+<div class="col-md-8"> -->
 
 
 <a  href="/tweets/create" class="st btn rounded-circle m-3">Add New Tweet</a>
@@ -62,31 +62,7 @@
 
     </div>
     </div>
-    <div class="col-md-4 pull-right mb-10">
-        <div class="card">
-            <div class="card-header">
-                Notifications
-                {{Auth::user()->notifications->count()}}
-
-            </div>
-            <div class="card-body">
-                <!-- notifications for Following  -->
-                @foreach(Auth::user()->unreadnotifications as $notification)
-
-                <h5>{{$notification->data['user_name']}} started following you</h5>
-                <p>{{$notification->created_at->diffForHumans()}}</p>
-                 {{$notification->markAsread()}}
-
-
-                @endforeach
-
-
-
-            </div>
-
-        </div>
-
-    </div>
+    
 </div>
 
 

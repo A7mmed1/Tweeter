@@ -10659,6 +10659,62 @@ a {
   text-decoration: none;
 }
 
+.head {
+  position: relative;
+}
+
+.noti {
+  list-style-type: none;
+}
+
+.drop {
+  margin: 0;
+  top: 42px;
+  left: 10;
+  padding: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  width: 220px;
+  position: absolute;
+}
+
+.drop:before {
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid white;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -6px;
+  left: 190px;
+}
+
+.head2 {
+  position: relative;
+}
+
+.drop2 {
+  margin-top: 10px;
+  top: 42px;
+  left: 10;
+  padding: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  width: 220px;
+  position: absolute;
+}
+
+.drop2:before {
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid white;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: -6px;
+  left: 190px;
+}
+
 .main .py-4 {
   padding: 0 !important;
   margin: 0 !important;
@@ -10698,7 +10754,6 @@ a {
 
 .pro {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
   margin: auto;
   text-align: center;
 }
@@ -10749,9 +10804,8 @@ a {
 }
 
 .profile-page .profile img {
-  max-width: 160px;
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   transform: translate3d(0, -50%, 0);
 }
 
@@ -10768,7 +10822,6 @@ a {
 
 .img-fluid,
 .img-thumbnail {
-  max-width: 100%;
   height: auto;
 }
 
@@ -10787,7 +10840,6 @@ a {
 }
 
 .profile-page .description {
-  max-width: 600px;
   color: #999;
   font-weight: 300;
   margin-top: 2px;
@@ -10823,6 +10875,25 @@ p {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
+}
+
+.cor {
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #adb5bd;
+  height: 0;
+  width: 0;
+  margin-bottom: -50px;
+  left: 15px;
+}
+
+.arr {
+  margin-bottom: -20px;
+}
+
+.dr {
+  margin-top: -20px;
 }
 
 .card {
@@ -10873,6 +10944,17 @@ p {
   color: rgba(0, 0, 0, 0.4);
   border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
   background: #fff;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.co p {
+  margin-left: 0;
 }
 
 .card-inverse .btn {
@@ -10940,7 +11022,7 @@ p {
 
 .ef {
   box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-  margin: 4px;
+  margin: 2px;
 }
 
 button:hover,

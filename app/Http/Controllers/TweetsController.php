@@ -79,7 +79,7 @@ class TweetsController extends Controller
 
 
 
-        // instantiate new, empty Post object
+        // instantiate new, empty Tweet 
             $tweet = new \App\Tweet();
 
 

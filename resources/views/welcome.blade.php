@@ -14,6 +14,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/markiting.css">
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js"></script>
+
 
 
 
@@ -47,7 +49,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span style="font-size:  color:green; ">    <i class="fab fa-signal-1"></span>   {{ Auth::user()->name }}    </i>         <img src="/storage/profile_image/{{Auth::user()->profile->profileimage}}" width="40px;"  class="rounded-circle" alt="">
+                                    <span style="font-size:  color:green; ">    <i class="fab fa-signal-1"></span>   {{ Auth::user()->name }}    </i>         <img src="/storage/profile_image/{{Auth::user()->profile->profileimage}}" width="40px;"  class="rounded-circle" alt="profile-image">
                                     <span class="caret"></span>
                                 </a>
 
@@ -142,25 +144,25 @@
                     </div>
                      <div class="row ">
                          <div class="col-sm-6 col-md-2">
-                             <img src="{{ asset('p1.jpg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p1.jpg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Willie Dom </i></b>
                          </div>
                          <div class="col-sm-1 col-lg-2">
-                             <img src="{{ asset('p2.jpg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p2.jpg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Ainsley Kim </i></b>
                          </div>
                          <div class="col-sm-1 col-lg-2">
-                             <img src="{{ asset('p3.jpeg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p3.jpeg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Abel Stark </i></b>
                          </div>
                          <div class="col-sm-1 col-lg-2">
-                             <img src="{{ asset('p4.jpg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p4.jpg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Karen Smith </i></b>
                          </div><div class="col-sm-1 col-lg-2">
-                             <img src="{{ asset('p5.jpeg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p5.jpeg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Taylor Owen </i></b>
                          </div><div class="col-sm-1 col-lg-2">
-                             <img src="{{ asset('p6.jpg') }}" width="150px;"  class="rounded-circle" alt="">
+                             <img src="{{ asset('p6.jpg') }}" width="150px;"  class="rounded-circle" alt="ppl-image">
                              <b> <i class="fal fa-badge-check">Pedro Rodrices </i></b>
                          </div>
                      </div>

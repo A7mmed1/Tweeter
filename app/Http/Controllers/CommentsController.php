@@ -42,6 +42,7 @@ class CommentsController extends Controller
     {
         $request->validate([
             'comment' => "required",
+            'photo' =>'nullable|max:1024',
 
 
         ]);
@@ -56,6 +57,14 @@ class CommentsController extends Controller
         $comment->tweet()->associate($tweet);
         $comment->user_id= $user_id;
         $comment->gif = $request->gif;
+        if($request->hasFile('photo')) {
+                $filenameWtihExtention =  $request->file('photo')->getClientOriginalName();
+                $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                $extention = $request->file('photo')->getClientOriginalExtension();
+                $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                $path =  $request->file('photo')->storeAs('public/comment_image' , $fileNameStore );
+                $comment->photo = $fileNameStore;
+            }
 
 
         $comment->save();
@@ -107,6 +116,14 @@ class CommentsController extends Controller
 
 
         $comment->gif = $request->gif;
+        if($request->hasFile('photo')) {
+                $filenameWtihExtention =  $request->file('photo')->getClientOriginalName();
+                $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                $extention = $request->file('photo')->getClientOriginalExtension();
+                $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                $path =  $request->file('photo')->storeAs('public/comment_image' , $fileNameStore );
+                $comment->photo = $fileNameStore;
+            }
 
 
 
@@ -116,8 +133,8 @@ class CommentsController extends Controller
 
         $comment->save();
 
-
         return redirect('/tweets/');
+
 
 
     }
