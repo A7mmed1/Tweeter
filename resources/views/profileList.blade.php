@@ -7,7 +7,9 @@
               @foreach($users as $user)
              <div class="col-sm-6 col-md-4 col-lg-3 mt-4 clearfix">
                 <div class="card">
-                    <img class="card-img-top rounded-circle"  src="/storage/profile_image/{{$user->profile->profileimage}}" >
+                    <!-- <img class="card-img-top rounded-circle"  src="/storage/profile_image/{{$user->profile->profileimage}}" > -->
+                    <img class="card-img-top rounded-circle"  src="{{ URL::to('/')}}/images{{$user->profile->profileimage}}" >
+
                 <div class="card-block">
                     <figure class="profile">
                     </figure>
