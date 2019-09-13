@@ -14,6 +14,7 @@ class FollowsController extends Controller
 
 
     }
+    
 
     // public function index(){
     //     return auth()->user()->following()->all();
