@@ -9,7 +9,7 @@
                 <!-- starting the profile -->
                <div class="profile2">
                     <div class="avatar ml-8">
-                        <a href="/storage/profile_image/{{$user->profile->profileimage}}"><img src="/storage/profile_image/{{$user->profile->profileimage}}" width="200px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                        <a href="{{ URL::to('/')}}/images/{{$user->profile->profileimage}}"><img src="{{ URL::to('/')}}/images/{{$user->profile->profileimage}}" width="200px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                         </a>
                     </div>
                     <div class="name ">
