@@ -82,22 +82,22 @@ class ProfileController extends Controller
         $profile->birthday=$request->input('birthday');
         $profile->bio=$request->input('bio');
 
-        if($request->hasFile('profileimage')) {
-                $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
-                $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
-                $extention = $request->file('profileimage')->getClientOriginalExtension();
-                $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
-                $path =  $request->file('profileimage')->move(base_path().'/public/images/' , $fileNameStore );
-                $profile->profileimage = $fileNameStore;
-            }
-            // if($request->hasFile('profileimage')) {
-            //         $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
-            //         $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
-            //         $extention = $request->file('profileimage')->getClientOriginalExtension();
-            //         $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
-            //         $path =  $request->file('profileimage')->storeAs('public/profile_image' , $fileNameStore );
-            //         $profile->profileimage = $fileNameStore;
-            //     }
+        // if($request->hasFile('profileimage')) {
+        //         $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
+        //         $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+        //         $extention = $request->file('profileimage')->getClientOriginalExtension();
+        //         $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+        //         $path =  $request->file('profileimage')->move(base_path().'/public/images/' , $fileNameStore );
+        //         $profile->profileimage = $fileNameStore;
+        //     }
+            if($request->hasFile('profileimage')) {
+                    $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
+                    $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                    $extention = $request->file('profileimage')->getClientOriginalExtension();
+                    $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                    $path =  $request->file('profileimage')->storeAs('public/profile_image' , $fileNameStore );
+                    $profile->profileimage = $fileNameStore;
+                }
 
 
 
