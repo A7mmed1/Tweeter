@@ -10,6 +10,7 @@ use App\Tweet;
 use App\Giphy;
 use App\User;
 use App\Mail\NewComment;
+use App\jobs\SendNewCommentEmail;
 
 
 
@@ -69,10 +70,13 @@ class CommentsController extends Controller
                 $comment->photo = $fileNameStore;
             }
 
-            Mail::to($comment->user)->send(new NewComment($comment));
 
         $comment->save();
         // return ('Successfully added');
+        SendNewCommentEmail::dispatch($comment);      
+          // return view('mail.email');
+
+
 
             return back();
     }

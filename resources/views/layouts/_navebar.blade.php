@@ -56,7 +56,7 @@
 
                                     {{$notification->data['user_name']}} started following you
                                     {{$notification->created_at->diffForHumans()}}
-                                     
+                                    {{$notification->markAsRead()}}
                                  </h6>
                                  <hr>
 
