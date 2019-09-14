@@ -73,7 +73,7 @@ class CommentsController extends Controller
 
         $comment->save();
         // return ('Successfully added');
-        SendNewCommentEmail::dispatch($comment);      
+        SendNewCommentEmail::dispatch($comment);
           // return view('mail.email');
 
 
