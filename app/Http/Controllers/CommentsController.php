@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
 use App\Tweet;
 use App\Giphy;
 use App\User;
+use App\Mail\NewComment;
+
 
 
 class CommentsController extends Controller
@@ -66,6 +69,7 @@ class CommentsController extends Controller
                 $comment->photo = $fileNameStore;
             }
 
+            Mail::to($comment->user)->send(new NewComment($comment));
 
         $comment->save();
         // return ('Successfully added');
