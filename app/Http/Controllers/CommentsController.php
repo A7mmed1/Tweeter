@@ -10,7 +10,7 @@ use App\Tweet;
 use App\Giphy;
 use App\User;
 use App\Mail\NewComment;
-use App\jobs\SendNewCommentEmail;
+use App\Jobs\SendNewCommentEmail;
 
 
 
