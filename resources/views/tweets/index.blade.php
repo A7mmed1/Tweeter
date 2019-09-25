@@ -15,12 +15,12 @@
             </tr>
                 @foreach($tweets as $tweet)
             <tr>
-                <td> <img src="/storage/profile_image/{{$tweet->user->profile->profileimage}}" width="100px;"  class="rounded-circle" alt="">
+                <td> <img src="{{Storage::disk('s3')->url($tweet->user->profile->profileimage)}}" width="100px;"  class="rounded-circle" alt="">
 
                     <h4 class="li"><a  href="/users/{{@$tweet->user->id}}"> <i style="color:#3490DC;"class="fas fa-check-circle">{{@$tweet->user->name}}</i></a></h4>
                     <h5>Title : <a href="/tweets/{{ $tweet->id }}"> <i class="far fa-eye">{{$tweet->title}}</i></a></h5>
                     <br>
-                    <a href="/storage/tweet_image/{{$tweet->image}}">   <img src="/storage/tweet_image/{{$tweet->image}}" width="300px" alt="photo"></a>
+                    <a href="{{Storage::disk('s3')->url($tweet->image)}}">   <img src="{{Storage::disk('s3')->url($tweet->image)}}" width="300px" alt="photo"></a>
                     <br>
 
                     <i class="far fa-thumbs-up " style="color:#3490DC">like({{$tweet->likes()->count() }})</i>
@@ -62,7 +62,7 @@
 
     </div>
     </div>
-    
+
 </div>
 
 

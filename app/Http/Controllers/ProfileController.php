@@ -10,7 +10,7 @@ use App\Tweet;
 use App\User;
 use App\Profile;
 use App\Notifications\NewFollower;
-
+use Storage;
 
 
 
@@ -91,16 +91,20 @@ class ProfileController extends Controller
         //         $profile->profileimage = $fileNameStore;
         //     }
             if($request->hasFile('profileimage')) {
-                    $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
-                    $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
-                    $extention = $request->file('profileimage')->getClientOriginalExtension();
-                    $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
-                    $path =  $request->file('profileimage')->storeAs('public/profile_image' , $fileNameStore );
-                    $profile->profileimage = $fileNameStore;
+                    // $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
+                    // $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                    // $extention = $request->file('profileimage')->getClientOriginalExtension();
+                    // $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                    // $path =  $request->file('profileimage')->storeAs('public/profile_image' , $fileNameStore );
+                    // $profile->profileimage = $fileNameStore;
+                    $path = Storage::disk('s3')->put('uploads/profiles' . $profile->id, request()->profileimage,'public');
+
                 }
+                // $path =  $request->file('profileimage')->store('public/profile_image'.$fileNameStore, 's3');
 
 
 
+        $profile->profileimage = $path;
         $profile->save();
     //save post, simultaneosusly check to see if save was succesful
 
@@ -191,17 +195,17 @@ class ProfileController extends Controller
         $profile->bio=$request->input('bio');
 
         if($request->hasFile('profileimage')) {
-                $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
-                $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
-                $extention = $request->file('profileimage')->getClientOriginalExtension();
-                $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                // $filenameWtihExtention =  $request->file('profileimage')->getClientOriginalName();
+                // $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                // $extention = $request->file('profileimage')->getClientOriginalExtension();
+                // $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                $path = Storage::disk('s3')->put('uploads/profiles' . $profile->id, request()->profileimage,'public');
 
-                $path =  $request->file('profileimage')->storeAs('public/profile_image' , $fileNameStore );
-                $profile->profileimage = $fileNameStore;
+
             }
 
 
-
+                $profile->profileimage = $path;
         $profile->save();
 
 

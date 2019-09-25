@@ -5,7 +5,8 @@
         <table class="table table-striped">
 
             <tr>
-                <td><img src="/storage/profile_image/{{$tweet->user->profile->profileimage}}" width="50px;"  class="rounded-circle" alt="">
+                <td><img src="{{Storage::disk('s3')->url($tweet->user->profile->profileimage)}}" width="50px;"  class="rounded-circle" alt="">
+
                     <a href="/users/{{$tweet->user->id}}">    {{$tweet->user->name}} </a>
                 <td>
                 @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id))
@@ -29,8 +30,9 @@
 
             </tr>
             <tr>
-                <td>
-                     <span class="info h6"><i class="fas fa-calendar-check text-muted">{{$tweet->created_at->diffForHumans()}}</i></span>
+
+
+                <td>     <span class="info h6"><i class="fas fa-calendar-check text-muted">{{$tweet->created_at->diffForHumans()}}</i></span>
                 </td>
             </tr>
             <tr>
@@ -39,7 +41,7 @@
             <tr>
                 <td>
 
-                    <a href="/storage/tweet_image/{{$tweet->image}}"> <img src="/storage/tweet_image/{{$tweet->image}}"  width="300px" alt="photo"></a>
+                    <a href="{{Storage::disk('s3')->url($tweet->image)}}"> <img src="{{Storage::disk('s3')->url($tweet->image)}}"  width="300px" alt="photo"></a>
                 </td>
 
 
@@ -83,7 +85,7 @@
 
                 <tr>
                    <td class="arr" >
-                       <img src="/storage/profile_image/{{$comment->user->profile->profileimage}}" width="50px;"  class="rounded-circle " alt="">
+                       <img src="{{Storage::disk('s3')->url($comment->user->profile->profileimage)}}" width="50px;"  class="rounded-circle " alt="">
                        <a href="/users/{{$comment->user->id}}">  {{$comment->user->name}} <br> <span class="cor pull-left ml-4"></a>
                    </td>
                         @if(!Auth::guest() && (Auth::user()->id == $tweet->user_id) && !Auth::guest() || (Auth::user()->id == $comment->user->id))

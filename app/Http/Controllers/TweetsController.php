@@ -8,6 +8,7 @@ use Illuminate\Http\UploadedFile;
 
 use App\Tweet;
 use App\Comment;
+use Storage;
 
 
 class TweetsController extends Controller
@@ -79,7 +80,7 @@ class TweetsController extends Controller
 
 
 
-        // instantiate new, empty Tweet 
+        // instantiate new, empty Tweet
             $tweet = new \App\Tweet();
 
 
@@ -91,13 +92,16 @@ class TweetsController extends Controller
             //$tweet->author=$request->input('author');
             // $tweet->image = $fileNameStore;
             if($request->hasFile('image')) {
-                    $filenameWtihExtention =  $request->file('image')->getClientOriginalName();
-                    $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
-                    $extention = $request->file('image')->getClientOriginalExtension();
-                    $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
-                    $path =  $request->file('image')->storeAs('public/tweet_image' , $fileNameStore );
-                    $tweet->image = $fileNameStore;
+                    $path = Storage::disk('s3')->put('uploads/tweets' . $tweet->id, request()->image,'public');
+                    // $filenameWtihExtention =  $request->file('image')->getClientOriginalName();
+                    // $fileName = pathinfo($filenameWtihExtention,PATHINFO_FILENAME);
+                    // $extention = $request->file('image')->getClientOriginalExtension();
+                    // $fileNameStore = $fileName . '_' .  time(). '.' .$extention;
+                    // $path =  $request->file('image')->storeAs('public/tweet_image' , $fileNameStore );
+                    // $tweet->image = $fileNameStore;
+
                 }
+                $tweet->image = $path;
 
             $tweet->user_id= Auth::id();
 

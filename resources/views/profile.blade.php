@@ -9,7 +9,7 @@
                 <!-- starting the profile -->
                <div class="profile2">
                     <div class="avatar ml-8">
-                        <a href="/storage/profile_image/{{$user->profile->profileimage}}"><img src="/storage/profile_image/{{$user->profile->profileimage}}" width="200px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                        <img src="{{Storage::disk('s3')->url($user->profile->profileimage)}}" width="200px;" alt="Circle Image" class="img-raised rounded-circle img-fluid">
                         </a>
                     </div>
                     <div class="name ">
@@ -73,7 +73,7 @@
             @foreach($tweets as $tweet)
             <div class="col-md-6 ml-4 text-cente justify-content-center">
 
-                    <img src="/storage/profile_image/{{$user->profile->profileimage}}" width="100"  class="rounded-circle" alt="profile">
+                    <img src="{{Storage::disk('s3')->url($user->profile->profileimage)}}" width="100"  class="rounded-circle" alt="profile">
                     <h2>{{ $tweet->user->name }}</h2>
                     <h4><strong><a href="/tweets/{{ $tweet->id }}">
                     {{$tweet->title}} </a></strong></h4><br>
@@ -81,8 +81,8 @@
 
                     <p class="pull-left mt-2"> </p>
                 <div class="row">
-                    <a href="/storage/tweet_image/{{$tweet->image}}" class="thumbnail">
-                    <img alt="Image"  width="400" src="/storage/tweet_image/{{$tweet->image}}" class="m-4 pull-right">
+                    <a href="{{Storage::disk('s3')->url($tweet->image)}}" class="thumbnail">
+                    <img alt="Image"  width="400" src="{{Storage::disk('s3')->url($tweet->image)}}" class="m-4 pull-right">
                     </a>
                     <div class="d-flex co">
                     <p class="p-2 m-1 mr-4"><i class="far fa-thumbs-up" style="color:#3490DC">like({{$tweet->likes()->count() }})</i></p>
